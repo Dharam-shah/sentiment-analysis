@@ -23,11 +23,22 @@ form.addEventListener('submit', async (event) => {
     body: JSON.stringify(formData)
   });
 
-  if (!response.ok) {
-    responseDiv.textContent = `Error: ${response.statusText}`;
-    return;
+  // console.log(response)
+  if(response.status == 0){
+    // console.log("pass")
+    var element = document.getElementsByClassName("response-msg")[0];
+    element.style.display = "block";
+    document.getElementById("clk").disabled = true;
   }
+  // if (!response.ok) {
+  //   responseDiv.textContent = `Error: ${response.statusText}`;
+  //   return;
+  // }
 
   const responseData = await response.json();
   responseDiv.textContent = `API Response: ${JSON.stringify(responseData)}`;
 });
+
+function submitForm() {
+  
+}
